@@ -14,10 +14,14 @@ def is_leap_year(year):
     True if leap year, False otherwise
     """
     # TODO: Implement the leap year logic
-    if ((year % 4) == 0) and (((year % 100) != 0 ) or ((year % 400) == 0)):
+    if year % 100 != 0 and year % 4 == 0:
+        return True
+    
+    if year % 4 == 0 and year % 400 == 0:
         return True
     else:
-        False
+        return False
 
     # Hint: Check divisibility in the correct order
     pass
+
