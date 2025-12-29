@@ -1,8 +1,15 @@
 def check_collision(x1, y1, w1, h1, x2, y2, w2, h2):
-    if x1 == x2 or y1 == y2:
-        return True
-    elif x1 + w1 == x2 or y1 + h1 == y2:
-        return True
+    # Check if one rectangle is completely to the left of the other
+    if x1 + w1 <= x2 or x2 + w2 <= x1:
+        return False
+
+    # Check if one rectangle is completely above the other
+    if y1 + h1 <= y2 or y2 + h2 <= y1:
+        return False
+
+    # Otherwise, rectangles overlap
+    return True
+
     """
     Checks if two rectangles are colliding (overlapping).
     
