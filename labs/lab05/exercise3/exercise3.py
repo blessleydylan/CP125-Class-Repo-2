@@ -1,13 +1,17 @@
 def find_bottleneck_index(traceroute):
-    bottleneck = 0
-    for i in range (len(traceroute)):
-        prev_hop, prev_ms = traceroute[i]
-        current_hop, current_ms = traceroute[i + 1]
-        if current_hop - prev_ms > bottleneck:
-            bottleneck = current_hop - prev_ms
-    return bottleneck
+    max_increase = 0
+    bottleneck_index = 0
 
+    for i in range(len(traceroute) - 1):
+        _, prev_ms = traceroute[i]
+        _, current_ms = traceroute[i + 1]
 
+        increase = current_ms - prev_ms
+        if increase > max_increase:
+            max_increase = increase
+            bottleneck_index = i
+
+    return bottleneck_index
 
 # Test
 traceroute = ((1, 5), (2, 8), (3, 45), (4, 48), (5, 50))
