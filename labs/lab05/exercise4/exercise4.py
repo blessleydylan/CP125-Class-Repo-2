@@ -1,9 +1,5 @@
-
-def filter_query_times(times):
-    """
-    Remove slow outliers (mean + std deviation) and return sorted times.
-    """
-    pass
+def filter_query_times(query_times):
+    a
 
 
 # Test
