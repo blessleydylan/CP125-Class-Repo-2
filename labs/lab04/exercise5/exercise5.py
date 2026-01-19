@@ -13,6 +13,7 @@ def is_momentum_day(prices, day):
 
 
 def find_momentum_days(prices):
+
     momentum_days = []
 
     for day in range(2, len(prices)):
