@@ -1,6 +1,20 @@
 
 def find_conflicting_ports(rules):
-    pass
+    # Track the first action seen for each port
+    first_action = {}
+    conflicts = {}
+
+    for rule_id, port, action in rules:
+        if port not in first_action:
+            first_action[port] = action
+        else:
+            # Conflict occurs when a different action appears
+            if first_action[port] != action and port not in conflicts:
+                conflicts[port] = rule_id
+
+    # Return sorted list of (port, rule_id)
+    return sorted(conflicts.items())
+
 
 
 rules = [

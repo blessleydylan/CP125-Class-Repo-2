@@ -1,23 +1,22 @@
-
 def find_slow_endpoints(api_calls, threshold):
-    # Collect response times for successful (200) calls only
     endpoint_times = {}
 
-    for endpoint, response_time, status in api_calls:
-        if status == 200:
+    # Collect response times for successful calls only
+    for endpoint, response_time, status_code in api_calls:
+        if status_code == 200:
             endpoint_times.setdefault(endpoint, []).append(response_time)
 
     slow_endpoints = []
 
+    # Evaluate each endpoint
     for endpoint, times in endpoint_times.items():
-        # Must have at least two successful calls
+        # Must have at least 2 successful calls
         if len(times) >= 2:
             average_time = sum(times) / len(times)
-            # Strictly greater than threshold
             if average_time > threshold:
                 slow_endpoints.append(endpoint)
 
-    # Return endpoints sorted alphabetically
+    # Return results sorted alphabetically
     return sorted(slow_endpoints)
 
 
