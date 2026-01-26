@@ -1,16 +1,21 @@
+def clean_sessions(server_pool, active_sessions, dead_servers):
+    """
+    Removes all sessions connected to dead servers that exist in the server pool.
+    Returns the remaining sessions sorted alphabetically by server ID.
+    """
 
-def clean_sessions(pool, sessions, dead_servers):
-    for i in dead_servers:
-        server_pool, session = dead_servers
-        for j in pool:
-            if server_pool == j
-                
-# Test
-pool = ("srv-A", "srv-B", "srv-C", "srv-D")
-sessions = [("srv-B", "cli-1"), ("srv-A", "cli-2"), ("srv-C", "cli-3"),
-            ("srv-B", "cli-4"), ("srv-D", "cli-5")]
-dead = ["srv-B", "srv-D"]
+    # Validate dead servers against the server pool
+    valid_dead_servers = {
+        server for server in dead_servers if server in server_pool
+    }
 
-result = clean_sessions(pool, sessions, dead)
-print(f"Cleaned Sessions: {result}")
-# Expected: [('srv-A', 'cli-2'), ('srv-C', 'cli-3')]
+    # Filter out sessions connected to valid dead servers
+    remaining_sessions = [
+        session for session in active_sessions
+        if session[0] not in valid_dead_servers
+    ]
+
+    # Sort remaining sessions by server ID
+    remaining_sessions.sort(key=lambda session: session[0])
+
+    return remaining_sessions
