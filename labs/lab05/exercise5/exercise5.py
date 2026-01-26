@@ -1,11 +1,10 @@
 
 def clean_sessions(pool, sessions, dead_servers):
-    """
-    Verify dead servers in pool, remove their sessions, and return sorted list.
-    """
-    pass
-
-
+    for i in dead_servers:
+        server_pool, session = dead_servers
+        for j in pool:
+            if server_pool == j
+                
 # Test
 pool = ("srv-A", "srv-B", "srv-C", "srv-D")
 sessions = [("srv-B", "cli-1"), ("srv-A", "cli-2"), ("srv-C", "cli-3"),
