@@ -1,6 +1,17 @@
 def apply_upgrade(current, upgrade):
-    # TODO: Your code here
-    pass
+    # Create a copy so original is not modified
+    result = current.copy()
+    
+    for permission, level in upgrade.items():
+        if permission not in result:
+            # Add new permission
+            result[permission] = level
+        else:
+            # Update only if upgrade level is higher
+            if level > result[permission]:
+                result[permission] = level
+    
+    return result
 
 
 
