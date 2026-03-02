@@ -2,21 +2,30 @@
 # Write your code below:
 
 def merge_lists(file1, file2, output_file):
-    """
-    Merge two lists of names, remove duplicates, and sort.
+    list1 = open(file1, "r")
+    list2 = open(file2, "r")
+    output = open(output_file, "w")
 
-    Args:
-        file1: path to first list file
-        file2: path to second list file
-        output_file: path to output file
+    content1 = set(list1.readlines())
+    content2 = set(list2.readlines())
 
-    Returns:
-        int: count of unique names
-    """
-    # TODO: Implement this function
-    pass
+    merged = sorted(content1 | content2)
+
+    for name in merged:
+        output.write(name)
+
+    list1.close()
+    list2.close()
+    output.close()
+
+    return output
 
 
 # Test your code here
-result = merge_lists("data/list1.txt", "data/list2.txt", "data/merged.txt")
+result = merge_lists(
+    "CP125-Class-Repo-2/labs/lab08/exercise2/data/list1.txt",
+    "CP125-Class-Repo-2/labs/lab08/exercise2/data/list2.txt",
+    "CP125-Class-Repo-2/labs/lab08/exercise2/data/merged.txt"
+)
+
 print(f"Unique names: {result}")
