@@ -18,7 +18,7 @@ def merge_lists(file1, file2, output_file):
     list2.close()
     output.close()
 
-    return output
+    return len(merged)
 
 
 # Test your code here
