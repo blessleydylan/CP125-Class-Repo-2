@@ -3,21 +3,41 @@
 import csv
 
 def calculate_order_total(products_file, order_file, output_file):
+    # Read products and store prices
+    products = {}
+    infile = open(products_file, "r")
+    lines = infile.readlines()
+    infile.close()
 
-    
-    """
-    Calculate total cost for each product in order.
+    for line in lines[1:]:  # skip header
+        parts = line.strip().split(",")
+        product_id = parts[0]
+        price = float(parts[2])
+        products[product_id] = price
 
-    Args:
-        products_file: path to products CSV (product_id,product_name,price)
-        order_file: path to order CSV (product_id,quantity)
-        output_file: path to output CSV file
+    # Read orders and calculate totals
+    orderfile = open(order_file, "r")
+    lines = orderfile.readlines()
+    orderfile.close()
 
-    Returns:
-        float: grand total of all orders
-    """
-    # TODO: Implement this function
-    pass
+    outfile = open(output_file, "w")
+    outfile.write("product_id,total_cost\n")
+
+    grand_total = 0
+
+    for line in lines[1:]:  # skip header
+        parts = line.strip().split(",")
+        product_id = parts[0]
+        quantity = int(parts[1])
+
+        total_cost = products[product_id] * quantity
+        grand_total += total_cost
+
+        outfile.write(product_id + "," + format(total_cost, ".2f") + "\n")
+
+    outfile.close()
+
+    return grand_total
 
 
 # Test your code here

@@ -10,7 +10,7 @@ def filter_passing_scores(input_file, output_file):
 
     for i in range(0, len(lines), 2):
         student_id = lines[i].strip()
-        score = int(lines[i + 1].strip())
+        score = int(lines[i+1].strip())
 
         if score >= 80:
             outfile.write(student_id + " " + str(score) + "\n")
@@ -18,8 +18,8 @@ def filter_passing_scores(input_file, output_file):
 
     infile.close()
     outfile.close()
-
     return passing_count
+    
 
 
 # Test your code here

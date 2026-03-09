@@ -6,13 +6,13 @@ def merge_lists(file1, file2, output_file):
     list2 = open(file2, "r")
     output = open(output_file, "w")
 
-    content1 = set(list1.readlines())
-    content2 = set(list2.readlines())
+    content1 = set(line.strip() for line in list1.readlines())
+    content2 = set(line.strip() for line in list2.readlines())
 
     merged = sorted(content1 | content2)
 
     for name in merged:
-        output.write(name)
+        output.write(name + "\n")
 
     list1.close()
     list2.close()

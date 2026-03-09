@@ -1,19 +1,41 @@
 # Lab 08 Exercise 4: Student Grade Calculator
 # Write your code below:
+import csv
+
+import csv
 
 def calculate_final_grades(input_file, output_file):
-    """
-    Calculate final grades from midterm and final scores.
+    infile = open(input_file, "r", newline="")
+    reader = csv.reader(infile)
 
-    Args:
-        input_file: path to scores CSV (student_id,midterm,final)
-        output_file: path to output CSV file
+    outfile = open(output_file, "w", newline="")
+    writer = csv.writer(outfile)
 
-    Returns:
-        float: average of all final grades
-    """
-    # TODO: Implement this function
-    pass
+    next(reader)  # skip header
+
+    writer.writerow(["student_id", "final_grade"])
+
+    total = 0
+    count = 0
+
+    for row in reader:
+        student_id = row[0]
+        midterm = float(row[1])
+        final = float(row[2])
+
+        final_grade = (midterm * 0.4) + (final * 0.6)
+
+        writer.writerow([student_id, f"{final_grade:.2f}"])
+
+        total += final_grade
+        count += 1
+
+    infile.close()
+    outfile.close()
+
+    return total / count
+    
+    
 
 
 # Test your code here
