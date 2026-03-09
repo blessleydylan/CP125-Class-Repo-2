@@ -2,6 +2,10 @@
 # Write your code below:
 import csv
 
+import csv
+import shutil
+import tempfile
+
 def summarize_sales(input_file, output_file):
     revenues = []
 
@@ -24,10 +28,10 @@ def summarize_sales(input_file, output_file):
 
     # Open output file
     outfile = open(output_file, "w")
-    outfile.write("Total Revenue: $" + str(round(total_revenue, 2)) + "\n")
-    outfile.write("Average Revenue: $" + str(round(average_revenue, 2)) + "\n")
-    outfile.write("Highest Revenue: $" + str(round(highest_revenue, 2)) + "\n")
-    outfile.write("Lowest Revenue: $" + str(round(lowest_revenue, 2)) + "\n")
+    outfile.write("Total Revenue: ${:.2f}\n".format(total_revenue))
+    outfile.write("Average Revenue: ${:.2f}\n".format(average_revenue))
+    outfile.write("Highest Revenue: ${:.2f}\n".format(highest_revenue))
+    outfile.write("Lowest Revenue: ${:.2f}\n".format(lowest_revenue))
     outfile.close()  # close output file
 
     # Return all values as a tuple
@@ -35,7 +39,6 @@ def summarize_sales(input_file, output_file):
 
 
 
-
 # Test your code here
-result = summarize_sales("data/sales.csv", "data/summary.txt")
+result = summarize_sales("CP125-Class-Repo-2/labs/lab08/exercise5/data/sales.csv", "CP125-Class-Repo-2/labs/lab08/exercise5/data/summary.txt")
 print(f"Total: ${result[0]:.2f}, Avg: ${result[1]:.2f}, High: ${result[2]:.2f}, Low: ${result[3]:.2f}")

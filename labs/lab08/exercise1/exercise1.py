@@ -23,5 +23,5 @@ def filter_passing_scores(input_file, output_file):
 
 
 # Test your code here
-result = filter_passing_scores("data/scores.txt", "data/passing.txt")
+result = filter_passing_scores("CP125-Class-Repo-2/labs/lab08/exercise1/data/scores.txt", "CP125-Class-Repo-2/labs/lab08/exercise1/data/passing.txt")
 print(f"Passing students: {result}")
