@@ -4,11 +4,11 @@ def critical_inventory(filename):
     df = pd.read_csv(filename)
     
     critical = df[
-        (df["Current_Stock"] < df["Reorder_Threshold"]) &
-        (df["Days_Since_Last_Restock"] > 30)
+        (df["StockLevel"] < df["ReorderThreshold"]) &
+        (df["DaysSinceRestock"] > 30)
     ]
     
-    products = set(critical["Product_Name"])
+    products = set(critical["ProductName"])
     
     return {
         "total_products": len(df),
