@@ -1,21 +1,22 @@
 import pandas as pd
 
 def explore_data(filename):
+    # Load CSV into DataFrame
     df = pd.read_csv(filename)
-
+    
     # Total number of students (rows)
-    total_students = df.shape[0]
-
-    # Subjects list (fixed order as required by tests)
+    total_students = len(df)
+    
+    # Subjects (fixed order as required by test)
     subjects = ["Math", "Science", "English"]
-
-    # Math average
-    math_average = df["Math"].mean()
-
+    
+    # Average Math score (rounded to 1 decimal place)
+    math_average = round(df["Math"].mean(), 1)
+    
     # Student with highest Math score
-    idx = df["Math"].idxmax()
-    highest_math_student = df.loc[idx, "Name"]
-
+    highest_math_student = df.loc[df["Math"].idxmax(), "Name"]
+    
+    # Return dictionary
     return {
         "total_students": total_students,
         "subjects": subjects,
