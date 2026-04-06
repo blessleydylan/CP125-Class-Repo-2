@@ -2,16 +2,13 @@ import pandas as pd
 
 def promotion_candidates(filename):
     df = pd.read_csv(filename)
+
+    avg_performance = round(df["PerformanceScore"].mean(), 1)
     
-    # Average performance
-    avg_performance = round(df["Performance"].mean(), 1)
-    
-    # Minimum years required
     min_years = 2
     
-    # Filter candidates
     filtered = df[
-        (df["Performance"] > avg_performance) &
+        (df["PerformanceScore"] > avg_performance) &
         (df["Years"] >= min_years)
     ]
     
