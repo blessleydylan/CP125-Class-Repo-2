@@ -12,3 +12,5 @@ def show_science_distribution(filename):
     plt.show()
     
     return len(df)
+
+show_science_distribution("CP125-Class-Repo-2\labs\lab09\data\students.csv")

@@ -15,3 +15,5 @@ def compare_subject_distributions(filename):
     plt.show()
     
     return len(df)
+
+compare_subject_distributions("CP125-Class-Repo-2\labs\lab09\data\students.csv")

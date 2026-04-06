@@ -14,3 +14,5 @@ def plot_subject_maximums(filename):
     plt.show()
     
     return len(df)
+
+plot_subject_maximums("CP125-Class-Repo-2\labs\lab09\data\students.csv")
